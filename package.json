@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "lint:prettier": "prettier --write .",
-    "lint:eslint": "eslint ./src",
-    "prepare": "husky"
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint .",
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "vue": "^3.5.8"
@@ -26,6 +27,7 @@
     "globals": "^15.9.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
+    "npm-run-all2": "^6.2.3",
     "prettier": "^3.3.3",
     "typescript": "5.5.4",
     "typescript-eslint": "^8.7.0",
