@@ -16,7 +16,12 @@ export default [
     languageOptions: { parserOptions: { parser: tseslint.parser } },
   },
   {
-    ignores: ['node_modules/*', 'public/*', 'dist/*'],
+    ignores: [
+      'node_modules/*',
+      'public/*',
+      'dist/*',
+      'src/typings/components.d.ts',
+    ],
   },
   {},
 ];
