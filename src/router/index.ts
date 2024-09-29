@@ -1,3 +1,4 @@
+import type { App } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -6,9 +7,18 @@ const router = createRouter({
     {
       path: '/',
       name: 'TestView',
-      component: () => import('../views/test/index.vue'),
+      component: () => import('../layouts/admin/index.vue'),
+      children: [
+        { path: '/', component: () => import('../views/test/index.vue') },
+      ],
     },
   ],
 });
 
-export default router;
+/**
+ * 安装 vue 路由
+ * @param app vue 实例
+ */
+export function setupRouter(app: App) {
+  app.use(router);
+}
